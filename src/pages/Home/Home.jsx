@@ -21,6 +21,7 @@ export default function Home() {
       );
       if (data?.message === "success") {
         setPosts(data.posts);
+        console.log(data.posts);
       }
     } catch (error) {
       console.error("Failed to fetch posts:", error);
@@ -29,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="w-3/4 mx-auto">
-      {postsList.map((post) => {
+      {postsList?.map((post) => {
         let {
           _id,
           body,
@@ -72,18 +73,18 @@ export default function Home() {
                   <div className="flex items-center gap-4">
                     <img
                       className="w-10 h-10 rounded-full"
-                      src={comments[comments.length - 1].commentCreator.photo}
+                      src={comments[comments.length - 1]?.commentCreator.photo}
                       alt=""
                     />
                     <div className="font-medium dark:text-white">
-                      <div>{comments[comments.length - 1].commentCreator.name}</div>
+                      <div>{comments[comments.length - 1]?.commentCreator.name}</div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(comments[comments.length-1].createdAt).toLocaleDateString()}
+                        {new Date(comments[comments.length-1]?.createdAt).toLocaleDateString()}
                       </div>
                     </div>
                   </div>
                 </div>
-                <h3>{comments[comments.length - 1].content}</h3>
+                <h3>{comments[comments.length - 1]?.content}</h3>
               </div>
             </div>
           </div>
